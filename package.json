@@ -1,0 +1,21 @@
+{
+	"name": "ui-template",
+	"version": "0.1.0",
+	"description": "Tempalte for my local libs",
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"scripts": {
+		"styles": "npx node-sass --importer node_modules/node-sass-magic-importer/dist/cli.js ./app/scss/style.scss ./public/dist/app.css",
+		"styles-min": "csso ./public/dist/app.css ./public/dist/app.min.css",
+		"build": "npm run styles && ./node_modules/.bin/esbuild app/js/main.js --bundle --outfile=public/dist/app.js",
+		"start": "npm run build -- --servedir=public",
+		"prod": "npm run build -- --minify && npm styles-min"
+	},
+	"devDependencies": {
+		"csso-cli": "^4.0.2",
+		"esbuild": "0.20.1",
+		"node-sass": "^9.0.0",
+		"node-sass-magic-importer": "^5.3.3"
+	}
+}
